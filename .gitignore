@@ -1,0 +1,10 @@
+/.data
+/deploy
+/DeclarativeComponent/classes
+/DeclarativeComponent/deploy
+/DeclarativeComponent/servers
+/DeclarativeComponent/public_html/WEB-INF/temp
+/DeclarativeComponent/public_html/META-INF/.WL_internal
+/Model/classes
+/Model/deploy
+/Model/servers

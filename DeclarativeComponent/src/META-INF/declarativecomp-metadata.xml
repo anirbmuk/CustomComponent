@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<declarativeCompDefs xmlns="http://xmlns.oracle.com/adf/faces/rich/declarativecomp">
+  <declarativecomp-jsp-ui-def>/decl/comp/tablesearch.jspx</declarativecomp-jsp-ui-def>
+  <declarativecomp-taglib>
+    <taglib-name>CustomComp</taglib-name>
+    <taglib-uri>/customcomp</taglib-uri>
+    <taglib-prefix>cc</taglib-prefix>
+  </declarativecomp-taglib>
+</declarativeCompDefs>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <af:componentDef var="attrs" componentVar="comp" definition="private">
+        <af:panelGroupLayout id="dc_pgl1" layout="scroll" styleClass="AFStretchWidth">
+            <af:panelHeader text="#{attrs.searchHeaderLabel}" id="dc_ph1" styleClass="AFStretchWidth"
+                            rendered="#{attrs.displaySearchPanel}">
+                <af:spacer width="10" height="5" id="dc_s2"/>
+                <af:query disclosed="#{attrs.discloseSearchPanel}" id="dc_q1" headerText=""
+                          value="#{backingBeanScope.tablesearchDefBean.searchComponentValue}"
+                          model="#{backingBeanScope.tablesearchDefBean.searchComponentModel}"
+                          queryListener="#{backingBeanScope.tablesearchDefBean.searchQueryListener}"
+                          queryOperationListener="#{backingBeanScope.tablesearchDefBean.queryOperationListener}"
+                          resultComponentId="::dc_t1"/>
+                <af:spacer width="10" height="5" id="dc_s3"/>
+            </af:panelHeader>
+            <af:spacer width="10" height="10" id="dc_s1" rendered="#{attrs.displaySearchPanel}"/>
+            <af:table id="dc_t1" summary="ResultsTable" value="#{backingBeanScope.tablesearchDefBean.searchTableValue}"
+                      styleClass="AFStretchWidth" var="row" autoHeightRows="#{attrs.resultsTableRowHeight}"
+                      emptyText="#{attrs.resultsTableEmptyText}">
+                <af:forEach items="#{backingBeanScope.tablesearchDefBean.attributeDefs}" var="def">
+                    <af:column id="dc_c1" headerText="#{def.name}" width="120">
+                        <af:outputText id="dc_ot1" value="#{row.bindings[def.name].inputValue}"/>
+                    </af:column>
+                </af:forEach>
+            </af:table>
+        </af:panelGroupLayout>
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>tablesearch</display-name>
+                <component-class>blog.anirbanm.cc.comp.Tablesearch</component-class>
+                <attribute>
+                    <attribute-name>criteriaName</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <required>true</required>
+                </attribute>
+                <attribute>
+                    <attribute-name>tableBinding</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <required>true</required>
+                </attribute>
+                <attribute>
+                    <attribute-name>searchHeaderLabel</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>resultsTableEmptyText</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>No data found.</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>resultsTableRowHeight</attribute-name>
+                    <attribute-class>java.lang.Integer</attribute-class>
+                    <default-value>10</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>displaySearchPanel</attribute-name>
+                    <attribute-class>java.lang.Boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>discloseSearchPanel</attribute-name>
+                    <attribute-class>java.lang.Boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <component-extension>
+                    <component-tag-namespace>blog.anirbanm.cc.comp</component-tag-namespace>
+                    <component-taglib-uri>/customcomp</component-taglib-uri>
+                </component-extension>
+            </component>
+        </af:xmlContent>
+    </af:componentDef>
+</jsp:root>
