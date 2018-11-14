@@ -19,7 +19,7 @@
                       styleClass="AFStretchWidth" var="row" autoHeightRows="#{attrs.resultsTableRowHeight}"
                       emptyText="#{attrs.resultsTableEmptyText}">
                 <af:forEach items="#{backingBeanScope.tablesearchDefBean.attributeDefs}" var="def">
-                    <af:column id="dc_c1" headerText="#{def.name}" width="120">
+                    <af:column id="dc_c1" headerText="#{bindings[attrs.tableBinding].hints[def.name].label}" width="120">
                         <af:outputText id="dc_ot1" value="#{row.bindings[def.name].inputValue}"/>
                     </af:column>
                 </af:forEach>
